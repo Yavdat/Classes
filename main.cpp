@@ -65,12 +65,15 @@ int main() {
     Route route;
     route.GetSource() = "Moscow"; // бесполезное присваивание
 
-    cout << route.GetLength();
 
     int destination_name_length = route.GetDestination().length();
 
     route.SetSource("Moscow");
     route.SetDestination("Vologda");
+
     PrintRoute(route);
+
+    cout << "route lentgh: " << route.GetLength() << endl;
+
     return 0;
 }
