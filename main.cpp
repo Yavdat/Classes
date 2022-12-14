@@ -2,7 +2,7 @@
 
 using namespace std;
 
-struct Route {
+class Route {
 public:
     string GetSource() {
         return source;
@@ -18,6 +18,15 @@ private:
     string destination;
     int length;
 }; 
+
+/*
+Структура(struct) - набор публичных полей
+используем, если не нужно контролировать консистентность
+*/
+/*
+Класс(class) скрывает данные, предоставляя определенный интерфейс доступа к ним
+используем, если поля связаны друг с другом и эту связь нужно контролировать.
+*/
 
 int main() {
     Route route;
