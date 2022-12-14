@@ -8,13 +8,14 @@ int ComputeDistance(const string& source,const string& destination) {
 
 class Route {
 public:
-    string GetSource() {
+    // указываем что метод не имеет права менять объект
+    string GetSource() const {
         return source;
     }
-    string GetDestination() {
+    string GetDestination() const {
         return destination;
     }
-    int GetLength() {
+    int GetLength() const {
         return length;
     }
     void SetSource(const string& new_source) {
@@ -35,8 +36,19 @@ private:
         length = ComputeDistance(source, destination);
     }
 
-}; 
+};
 
+void PrintRoute(const Route& route) {
+    cout << route.GetSource() << " - " <<
+        route.GetDestination() << "\n";
+}
+
+void ReverseRoute(Route& route) {
+    string old_source = route.GetSource();
+    string old_destination = route.GetDestination();
+    route.SetSource(old_destination);
+    route.SetDestination(old_source);
+}
 /*
 Структура(struct) - набор публичных полей
 используем, если не нужно контролировать консистентность
@@ -56,5 +68,9 @@ int main() {
     cout << route.GetLength();
 
     int destination_name_length = route.GetDestination().length();
+
+    route.SetSource("Moscow");
+    route.SetDestination("Vologda");
+    PrintRoute(route);
     return 0;
 }
