@@ -75,5 +75,8 @@ int main() {
 
     cout << "route lentgh: " << route.GetLength() << endl;
 
+    ReverseRoute(route);
+    PrintRoute(route);
+
     return 0;
 }
