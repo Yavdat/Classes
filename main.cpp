@@ -38,6 +38,13 @@ private:
 
 };
 
+Route BuildRoute(const string& source, const string& destination) {
+    Route route;
+    route.SetSource(source);
+    route.SetDestination(destination);
+    return route;
+}
+
 void PrintRoute(const Route& route) {
     cout << route.GetSource() << " - " <<
         route.GetDestination() << "\n";
@@ -77,6 +84,10 @@ int main() {
 
     ReverseRoute(route);
     PrintRoute(route);
+
+    Route route2 = BuildRoute("Ufa", "Kazan");
+    PrintRoute(route2);
+    cout << "route lentgh: " << route2.GetLength() << endl;
 
     return 0;
 }
