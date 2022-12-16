@@ -15,6 +15,11 @@ public:
         this->destination = new_destination;
         UpdateLength();
     }
+    ~Route() {
+        for (const string& entry : compute_distance_log) {
+            cout << entry << "\n";
+        }
+    }
     // указываем что метод не имеет права менять объект
     string GetSource() const {
         return source;
@@ -38,9 +43,11 @@ private:
     string source;
     string destination;
     int length;
+    vector<string> compute_distance_log;
 
     void UpdateLength() {
         length = ComputeDistance(source, destination);
+        compute_distance_log.push_back(source + "-" + destination);
     }
 
 };
