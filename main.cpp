@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
@@ -8,6 +9,12 @@ int ComputeDistance(const string& source,const string& destination) {
 
 class Route {
 public:
+    Route() {};
+    Route(const string& new_source, const string& new_destination) {
+        this->source = new_source;
+        this->destination = new_destination;
+        UpdateLength();
+    }
     // указываем что метод не имеет права менять объект
     string GetSource() const {
         return source;
@@ -70,6 +77,11 @@ void ReverseRoute(Route& route) {
 
 int main() {
     Route route;
+    
+    PrintRoute(Route());
+    PrintRoute({});
+
+    // Route route("Moscow", "Nizhniy Novgorod");
     route.GetSource() = "Moscow"; // бесполезное присваивание
 
 
@@ -88,6 +100,9 @@ int main() {
     Route route2 = BuildRoute("Ufa", "Kazan");
     PrintRoute(route2);
     cout << "route lentgh: " << route2.GetLength() << endl;
+
+    vector<Route> routes;
+    routes.push_back({"Khimki", "Konakovo"});
 
     return 0;
 }
